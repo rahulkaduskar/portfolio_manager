@@ -1,0 +1,58 @@
+// Place all the styles related to the protfolios controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+#upload-progress{
+	display:none;
+}
+input#fileupload{
+	position: relative;
+  top: -40px;
+  width: 100px;
+  height: 40px;
+	opacity: 0;
+}
+.progress {
+	width:300px;
+	height:15px !important;
+}
+#file_upload {
+	padding: 0px;
+  height: 40px;
+	div{
+		line-height: 38px;
+	}
+}
+button#file_upload{
+  background-color: #DFDFDF;
+  color: #636060;
+  font-weight: 900;
+}
+.green{
+  background-color: #41C159 !important;
+}
+
+.portfolio-container {
+  float: left;
+  width: 200px;
+  background-color: #2B18FB;
+  border: 1px solid #0B045D;
+  color: #FFF;
+  height: 60px;
+  padding: 0px 5px;
+  margin: 3px 3px;
+  position: relative;
+  font-weight: bolder;
+  span.loss {
+    bottom: 0px;
+    position: absolute;
+    right: 0px;
+    background-color: #C32F2F;
+    padding: 3px 15px;
+  }
+}
+section#uploader{
+  div.container {
+    border: none;
+  }
+}

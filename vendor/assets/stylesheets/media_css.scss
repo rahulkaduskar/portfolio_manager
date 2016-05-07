@@ -1,0 +1,25 @@
+$primary-color: #031B7D;
+@media (min-width: 768px) {
+  header {
+    .header-content .header-content-inner {
+      max-width: 1000px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .header-content .header-content-inner p {
+      font-size: 18px;
+      max-width: 80%;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+  .navbar-default {
+    border-color: rgba(255, 255, 255, 0.3);
+    position: static;
+  }
+  
+  .navbar-default.affix {
+    background-color: $primary-color;
+    border-color: rgba(34, 34, 34, 0.05);
+  }
+}

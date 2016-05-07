@@ -1,0 +1,30 @@
+<header>
+	<div class="header-content">
+		<div class="header-content-inner">
+			<% if @file_for == PortfolioManagement::FILE_FOR_PORTFOLIO %>
+				<h3>Upload your Portfolios:</h3>
+			<% else %>
+				<h3>Upload current Share Price:</h3>
+			<% end %>
+		</div>
+	</div>
+</header>
+<section id="uploader">
+	<div class="container">
+			<button type="button" id="file_upload" class="btn btn-default spacing">
+			<div><span> Select File </span></div>
+			<% url = url_for controller: "portfolios", action: "import" %>
+			<input id="fileupload" type="file" name="file" data-url= <%= url %>  class="fileuploadInput" multiple="false"  accept=".csv" accepted_file_types="text/csv">
+			<input type="hidden" id="file_for" name="file_for" value='<%= @file_for %>'/>
+			</button>
+			<div class="spacing"></div>
+			<div id="upload-progress">
+				<span>filename</span>
+				<div class="progress">
+					<div class="progress-bar" role="progressbar">
+						<span class="sr-only">70% Complete</span>
+					</div>
+				</div>
+			</div>
+	</div>
+</section>

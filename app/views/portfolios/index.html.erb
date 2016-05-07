@@ -1,0 +1,35 @@
+<header>
+	<div class="header-content">
+		<div class="header-content-inner">
+			<h3>Your Portfolis</h3>
+		</div>
+	</div>
+</header>
+<section id="services">
+	<div class="container">
+		<% if @portfolios.blank? %>
+			<h4> Portfolios not available. </h4>
+		<% else %>
+		  <% @portfolios.each do |key, portfolios| %>
+			  <div class="main-portfolios" >
+				  <h3> <%= link_to key.gsub("_", " "),portfolio_path(key) %></h3>
+				  <% portfolios.each do | portfolio|  %>
+					  <% tooltip = "Purchase Date: #{portfolio.purchase_date.strftime('%B %d %Y')} \n Purchase Quantity: #{portfolio.purchase_qty}" %>
+					  <div class="portfolio-container" data-toggle="tooltip" title="<%= tooltip %>">
+					  	<div>
+					  		<span class="title"> <%= portfolio.ticket_name %></span>
+					  		<span class="cost right"><%= portfolio.purchase_price %></span>
+					  	</div>
+						  <% if @current_prices.present? && @current_prices[portfolio.ticket_name] %>
+						  	<% loss = portfolio.calculate_profit_loss(@current_prices[portfolio.ticket_name]) %>
+						  	<span class="loss <%= 'hidden' if loss.nil? %> <%= 'green' if loss >= 0 %>"  > 
+							  	<%= loss %>
+						  	</span>
+						  <% end %>
+				  	</div>
+				  <% end %>
+			  </div>
+		  <% end %>
+		<% end %>
+	</div>
+</section>

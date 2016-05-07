@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ProtfolioManagement</title>
+  <%= stylesheet_link_tag    'application', media: 'all' %>
+  <%= javascript_include_tag 'application' %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <a class="navbar-brand page-scroll" href="#page-top">Portfolio Manager</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">          
+        <li><%= link_to "Portfolio details", portfolios_path %> </li>
+        <li><%= link_to "Upload Portfolio", import_form_portfolios_path %> </li>
+        <li><%= link_to "Upload Current Price", import_form_portfolios_path(file_for: 'shareprice') %> </li>           
+      </ul>
+    </div>
+    <!-- /.navbar-collapse -->
+</div>
+<!-- /.container-fluid -->
+  </nav>
+  <%= content_tag(:div, flash[:error], :class => "alert alert-danger", :style => "#{flash[:error].present? ? '' : 'display:none' }") %>
+  <%= content_tag(:div, flash[:success], :class => "alert alert-success", :style => "#{flash[:error].present? ? '' : 'display:none' }") %>
+
+  <%= yield %>
+
+</body>
+</html>
