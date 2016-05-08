@@ -32,8 +32,10 @@ gem "highcharts-rails"
 # gem 'capistrano-rails', group: :development
 
 group :test do
+	gem 'minitest-rails'
 	gem "minitest-rails-capybara"
-	gem "selenium-webdriver"
+	gem 'capybara', '2.2.1'
+  gem 'selenium-webdriver', '2.41.0'
 end
 
 group :development, :test do

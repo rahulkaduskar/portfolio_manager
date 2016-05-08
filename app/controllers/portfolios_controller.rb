@@ -12,7 +12,6 @@ class PortfoliosController < ApplicationController
 	end
 
 	def import
-		bindint.pry
 		file_data = params[:file]
 		if file_data.content_type == "text/csv" && file_data.respond_to?(:read)
 		  portfolio_data = file_data.read
@@ -21,7 +20,7 @@ class PortfoliosController < ApplicationController
 		  error_msg = "Please upload only csv file."
 		end	
 		if !success
-			render json: {error: error_msg}, status: :unprocessable_entity
+			render json: {error: error_msg}, status: 400
 		else
 			render json: {redirect_url: portfolios_url}, status: :ok
 		end

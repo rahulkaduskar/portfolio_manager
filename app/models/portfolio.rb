@@ -17,6 +17,7 @@ class Portfolio
   end
 
   def calculate_profit_loss(current_price)
+    return 0 if current_price.nil? || current_price < 0
     return ((current_price - self.purchase_price) * self.purchase_qty).round(2) 
   end
 

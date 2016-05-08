@@ -8,19 +8,19 @@
 <section id="services">
 	<div class="container">
 		<% if @portfolios.blank? || @current_prices.blank? %>
-		  <h4> Portfolio chart not available. </h4>
+		<h4> Portfolio chart not available. </h4>
 		<% else %>
-		  <div id="chart-container" >			
+		<div id="chart-container" >
+			<script>
+			  var datax = <%= @myportfolio.collect(&:ticket_name).to_json.html_safe %>
+			  var data = [];
 			  <% @myportfolio.each do |portfolio| %>
 			    <% profit_loss = portfolio.calculate_profit_loss(@current_prices[portfolio.ticket_name]) %>
 			    <% color =  profit_loss >= 0 ? "#41C159" : "#C32F2F" %>
-			    <script>
-			      var datax = <%= @myportfolio.collect(&:ticket_name).to_json.html_safe %>
-			      var data = [];
-			      data.push({ name: '<%= portfolio.ticket_name %>', y: <%= profit_loss %>, color: '<%= color %>'});
-			    </script>
+			    data.push({ name: '<%= portfolio.ticket_name %>', y: <%= profit_loss %>, color: '<%= color %>'});
 			  <% end %>
-			  barchart.init(datax, data, '<%= @profile %>');		
+					barchart.init(datax, data, '<%= @profile %>');
+			</script>
 		</div>
 		<% end %>
 	</div>
